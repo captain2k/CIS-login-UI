@@ -1,15 +1,15 @@
 import { Spin } from 'antd'
 import { LoginBg } from '../../assets/img';
-// import { LoginNew } from '../../assets/svg'
+import { LoginNew } from '../../assets/svg'
 import styles from './index.module.scss'
 import { handleRedirect } from '../../helpers';
 import { ArrowRightOutlined } from '@ant-design/icons';
-import { ReactComponent as LoginNew } from '../../assets/svg/login_new.svg';
+// import { ReactComponent as LoginNew } from '../../assets/svg/login_new.svg';
 
 export const HomeLogin = () => {
 
     const renderLogo = () => {
-        // return <LoginNew onClick={() => handleRedirect("https://deepcare.io/")} />
+        return <LoginNew onClick={() => handleRedirect("https://deepcare.io/")} />
     }
 
     const renderAddress = () => {
