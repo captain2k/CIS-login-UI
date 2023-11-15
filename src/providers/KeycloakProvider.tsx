@@ -1,42 +1,39 @@
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 import { Spin } from "antd";
-import keycloak from "../libs/Keycloak";
+import jwtDecode from "jwt-decode";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { actionUrls } from "../constant/urlKeys";
-import { keys } from '../constant/keys'
-import apiServices from "@/config/apiServices";
-
+import { actionUrls, keys } from "../constants";
+import { updateTokens } from "../ducks/slices/authSlice";
+import keycloak from "../libs/Keycloak";
+import { redirectUrls } from "constants/keys";
 
 export const KeycloakProvider = ({ children }) => {
-  // const dispatch = useDispatch();
-  // config logout các module ở đây nhé các thầy
+  const dispatch = useDispatch();
+ // config logout các module ở đây nhé các thầy
   useEffect(() => {
     const { searchParams } = new URL(window.location.href);
     const action = searchParams.get(actionUrls.redirect)
-    if (action === actionUrls.logout) {
-      localStorage.setItem(keys.REDIRECT, action);
+    if(action === actionUrls.logout) {
+        localStorage.setItem(keys.REDIRECT,action); 
     }
   }, []);
 
   const handleTokens = (tokens) => {
     // console.log('tokens on Keycloak provider',tokens)
-    // if (!!tokens.token) {
-    //   localStorage.setItem(keys.access_token, tokens.token);
-    //   localStorage.setItem(keys.refresh_token, tokens.refreshToken);
+    if (!!tokens.token) {
+      localStorage.setItem(keys.access_token, tokens.token);
+      localStorage.setItem(keys.refresh_token, tokens.refreshToken);
 
-    //   tokens.info = jwtDecode(tokens.token);
+      // tokens.info = jwtDecode(tokens.token);
 
-    //   dispatch(updateTokens(tokens));
-    // }
+      dispatch(updateTokens(tokens));
+    }
   };
 
   const handleEvent = (e) => {
     console.log("event keycloak", e);
   };
-
-  console.log(keycloak, 'keycloak');
-
 
   return (
     <ReactKeycloakProvider
