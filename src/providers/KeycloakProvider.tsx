@@ -1,11 +1,9 @@
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 import { Spin } from "antd";
 import keycloak from "../libs/Keycloak";
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { actionUrls } from "../constant/urlKeys";
 import { keys } from '../constant/keys'
-import apiServices from "@/config/apiServices";
 
 
 export const KeycloakProvider = ({ children }) => {
@@ -19,7 +17,7 @@ export const KeycloakProvider = ({ children }) => {
     }
   }, []);
 
-  const handleTokens = (tokens) => {
+  const handleTokens = () => {
     // console.log('tokens on Keycloak provider',tokens)
     // if (!!tokens.token) {
     //   localStorage.setItem(keys.access_token, tokens.token);
@@ -35,7 +33,7 @@ export const KeycloakProvider = ({ children }) => {
     console.log("event keycloak", e);
   };
 
-  console.log(keycloak, 'keycloak');
+  // console.log(keycloak, 'keycloak');
 
 
   return (
@@ -45,7 +43,7 @@ export const KeycloakProvider = ({ children }) => {
       onTokens={handleTokens}
       initOptions={{
         checkLoginIframe: false,
-        // onLoad:'login-required'
+        // onLoad: 'login-required'
       }}
       onEvent={handleEvent}
       autoRefreshToken={false}
