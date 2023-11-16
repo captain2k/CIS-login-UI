@@ -5,9 +5,7 @@ import './assets/styles/style.scss'
 import { KeycloakProvider } from './providers/KeycloakProvider'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <KeycloakProvider>
-      <App />
-    </KeycloakProvider>
-  </React.StrictMode>,
+  <KeycloakProvider>
+    <App />
+  </KeycloakProvider>
 )

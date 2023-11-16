@@ -19,16 +19,16 @@ export const KeycloakProvider = ({ children }) => {
     }
   }, []);
 
-  const handleTokens = (tokens) => {
+  const handleTokens = () => {
     // console.log('tokens on Keycloak provider',tokens)
-    if (!!tokens.token) {
-      localStorage.setItem(keys.access_token, tokens.token);
-      localStorage.setItem(keys.refresh_token, tokens.refreshToken);
+    // if (!!tokens.token) {
+    //   localStorage.setItem(keys.access_token, tokens.token);
+    //   localStorage.setItem(keys.refresh_token, tokens.refreshToken);
 
       // tokens.info = jwtDecode(tokens.token);
 
-      dispatch(updateTokens(tokens));
-    }
+      // dispatch(updateTokens(tokens));
+    // }
   };
 
   const handleEvent = (e) => {
@@ -39,10 +39,10 @@ export const KeycloakProvider = ({ children }) => {
     <ReactKeycloakProvider
       authClient={keycloak}
       LoadingComponent={<LoadingComponent />}
-      onTokens={handleTokens}
+      // onTokens={handleTokens}
       initOptions={{
         checkLoginIframe: false,
-        // onLoad:'login-required'
+        // onLoad: 'login-required'
       }}
       onEvent={handleEvent}
       autoRefreshToken={false}
@@ -51,7 +51,6 @@ export const KeycloakProvider = ({ children }) => {
     </ReactKeycloakProvider>
   );
 };
-
 const LoadingComponent = () => (
   <div style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
     <Spin spinning />

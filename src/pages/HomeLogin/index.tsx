@@ -27,9 +27,9 @@ export const HomeLogin = () => {
         const TOP = window.top.outerHeight / 2 + window.top.screenY - HEIGHT / 2;
         const LEFT = window.top.outerWidth / 2 + window.top.screenX - WIDTH / 2;
 
-        // const loginUrl = keycloak.createLoginUrl({
-        //     redirectUri: window.location.origin + paths.authenticated,
-        // });
+        const loginUrl = keycloak.createLoginUrl({
+            redirectUri: window.location.origin + paths.authenticated,
+        });
     }
 
     const renderAddress = () => {
@@ -104,7 +104,7 @@ export const HomeLogin = () => {
                     <div>{renderAddress()}</div>
 
                     {/* <div>Tel: 0983 858 100</div> */}
-                    {true ? (
+                    {/* {true ? (
                         <>
                             <div>Website: {renderContact().WEBSITE}</div>
 
@@ -120,7 +120,15 @@ export const HomeLogin = () => {
 
                             <div>{renderContact().EMAIL}</div>
                         </>
-                    )}
+                    )} */}
+
+                    <>
+                        <div>Website: {renderContact().WEBSITE}</div>
+
+                        <div>Hotline: {renderContact().HOTLINE}</div>
+
+                        <div>Email: {renderContact().EMAIL}</div>
+                    </>
                 </div>
                 {/* <QuenMatKhau ref={forgotPassRef}/> */}
             </div>
