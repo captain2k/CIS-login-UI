@@ -1,0 +1,100 @@
+
+.container_v3 {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  overflow: auto;
+  .content {
+    text-align: center;
+    background: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      width: 6px !important;
+      height: 6px !important;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #d9d9d9;
+      border-radius: 10px;
+    }
+    .header {
+      height: auto;
+      background: #FFFFFF;
+      h1 {
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 60px;
+        color: #4263EB;
+        margin: 26px 0 12px;
+      }
+      p {
+        margin: 0 auto;
+        width: 720px;
+        height: 40px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: center;
+        color: #2C3782;
+        line-height: normal;
+      }
+    }
+    .btn-wrapper {
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      min-height: 415px;
+    }
+    .box {
+      height: 169px;
+      width: 262px;
+      border-radius: 15px;
+      text-align: initial;
+      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.08);
+      border: none;
+      :global(.ant-card-body) {
+        padding: 23px;
+      }
+      h2 {
+        font-size: 20px;
+        color: #2C3782;
+      }
+      span {
+        font-size: 14px;
+        line-height: normal;
+        color: #2C3782;
+        white-space: pre-line;
+      }
+      .arrow {
+        height: 36px;
+        width: 36px;
+        pointer-events: none;
+        background-color: transparent;
+        border-radius: 50%;
+        color: white;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        border: 2px solid white;
+      }
+    }
+    :global(.ant-card-hoverable:hover) {
+      margin: -0.5px 0 0 -0.5px;
+      box-shadow: 20px 20px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }
+  .footer {
+    padding: 5px 50px 20px;
+    background: white;
+    font-size: 14px;
+    a {
+      color: #3254E2;
+      font-weight: 700 !important;
+    }
+    div, b {
+      font-weight: 700 !important;
+      font-size: 14px;
+      color: #2C3782;
+    }
+  }
+}
