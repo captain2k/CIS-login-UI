@@ -9,3 +9,9 @@ import {
 import { dcLink } from "./constantLink.js";
 import { useNavigate } from 'react-router-dom';
 import { paths, urlKeys } from "../../constants";
+import { useDispatch, useSelector } from "react-redux";
+import { useAuth } from "../../hooks";
+import { doCheckUser } from "ducks/slices/authSlice";
+import { routeApp } from "../../constants/keys";
+// import SubHeader from '../../layouts/SubHeader/SubHeader'
+export const SoftwareRoute = () => {}

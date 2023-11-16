@@ -4,12 +4,32 @@ import { LoginNew } from '../../assets/svg'
 import styles from './index.module.scss'
 import { handleRedirect } from '../../helpers';
 import { ArrowRightOutlined } from '@ant-design/icons';
-// import { ReactComponent as LoginNew } from '../../assets/svg/login_new.svg';
+import { useRef } from 'react';
+import { useKeycloak } from '@react-keycloak/web';
+import { paths } from '../../constant/path';
 
 export const HomeLogin = () => {
+    const keyCloakWindow = useRef<any>()
+    const { keycloak } = useKeycloak()
 
     const renderLogo = () => {
         return <LoginNew onClick={() => handleRedirect("https://deepcare.io/")} />
+    }
+
+    const handleClickLogin = () => {
+        if (keyCloakWindow.current && !keyCloakWindow.current.closed) {
+            keyCloakWindow.current.focus();
+            return;
+        }
+        const WIDTH = 800;
+        const HEIGHT = 600;
+
+        const TOP = window.top.outerHeight / 2 + window.top.screenY - HEIGHT / 2;
+        const LEFT = window.top.outerWidth / 2 + window.top.screenX - WIDTH / 2;
+
+        // const loginUrl = keycloak.createLoginUrl({
+        //     redirectUri: window.location.origin + paths.authenticated,
+        // });
     }
 
     const renderAddress = () => {
@@ -69,7 +89,7 @@ export const HomeLogin = () => {
                         <p>Giải pháp thông minh quản lý phòng khám, chuỗi phòng khám đa khoa hiệu quả, tiện dụng, mọi lúc, mọi nơi trên mọi nền tảng</p>
 
                         <div className={styles["btn-wrapper"]}
-                        // onClick={handleClickLogin}
+                            onClick={handleClickLogin}
                         >
                             <button>Đăng nhập</button>
                             <div className={styles["arrow-wrapper"]}>
